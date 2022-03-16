@@ -20,8 +20,11 @@ function writeToFile(body) {
           process.exit();
         } 
         else if (key.name === 'y') {
-          // fs.writeFile(localPath, body, { flag: "w" }, err => console.error(err));
-          
+          fs.writeFile(localPath, body, { flag: "w" }, err => {
+            if (err) console.error(err);
+            console.log(`File written successfully!`);
+            process.exit(1);
+          });
         }
       });
     }
